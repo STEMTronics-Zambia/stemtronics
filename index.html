@@ -1,283 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>STEMtronics | Innovation & Education Zambia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #dc3545;
+            --dark-bg: #121416;
+            --soft-bg: #f8f9fa;
+            --whatsapp-green: #25d366;
+        }
 
-<title>STEMtronics</title>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #2d3436;
+            scroll-behavior: smooth;
+            line-height: 1.7;
+        }
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        /* Navbar Styling - Glassmorphism */
+        .navbar {
+            backdrop-filter: blur(15px);
+            background-color: rgba(18, 20, 22, 0.98) !important;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
 
-<style>
+        /* Hero Styling */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), 
+                        url("https://images.unsplash.com/photo-1581093458791-9d42c60c03c2?auto=format&fit=crop&q=80");
+            background-size: cover;
+            background-position: center;
+            height: 85vh;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
 
-/* GLOBAL */
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #0f172a;
-    color: #e2e8f0;
-}
+        .hero h1 {
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
 
-/* NAVBAR */
-.navbar {
-    backdrop-filter: blur(10px);
-    background: rgba(15, 23, 42, 0.9) !important;
-}
+        .section { padding: 100px 0; }
 
-/* HERO */
-.hero {
-    background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)),
-    url("https://images.unsplash.com/photo-1581093458791-9d42c60c03c2");
-    background-size: cover;
-    background-position: center;
-    height: 85vh;
-    display: flex;
-    align-items: center;
-    text-align: center;
-}
+        /* Card & Feature Styling */
+        .feature-card {
+            border: none;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            background: #fff;
+            border: 1px solid #eee;
+        }
 
-.hero h1 {
-    font-size: 3.5rem;
-}
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important;
+            border-color: var(--primary-red);
+        }
 
-.hero p {
-    color: #94a3b8;
-}
+        /* Project Gallery */
+        .gallery img {
+            height: 260px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
 
-/* SECTION */
-.section {
-    padding: 80px 0;
-}
+        /* Partners Grayscale Effect */
+        .partner-logo {
+            filter: grayscale(20%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            max-height: 50px;
+        }
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+        }
 
-/* CARDS */
-.card {
-    background: #1e293b;
-    border: none;
-    border-radius: 15px;
-    transition: 0.3s;
-}
+        /* Buttons */
+        .btn-whatsapp {
+            background-color: var(--whatsapp-green);
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .btn-whatsapp:hover {
+            background-color: #128c7e;
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
 
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-}
+        .btn-danger {
+            background-color: var(--primary-red);
+            padding: 14px 35px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
 
-/* GALLERY */
-.gallery img {
-    height: 230px;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: 0.3s;
-}
+        /* Map and Footer */
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+        }
 
-.gallery img:hover {
-    transform: scale(1.05);
-}
+        footer {
+            background: var(--dark-bg);
+            color: #888;
+            padding: 80px 0 40px;
+        }
 
-/* BUTTONS */
-.btn-primary {
-    background: #0ea5e9;
-    border: none;
-}
-
-.btn-primary:hover {
-    background: #0284c7;
-}
-
-/* FOOTER */
-footer {
-    background: #020617;
-    color: #64748b;
-    padding: 30px;
-}
-
-/* FORM */
-.form-control {
-    background: #1e293b;
-    border: none;
-    color: white;
-}
-
-.form-control::placeholder {
-    color: #94a3b8;
-}
-
-</style>
+        .form-control {
+            border: 1px solid #eee;
+            border-radius: 10px;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: var(--primary-red);
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-<div class="container">
-<a class="navbar-brand fw-bold fs-4" href="#">
-STEM<span class="text-info">Tronics</span>
-</a>
-
-<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navmenu">
-<span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="collapse navbar-collapse" id="navmenu">
-<ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-<li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-<li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-<li class="nav-item"><a class="nav-link" href="#location">Location</a></li>
-<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-</ul>
-</div>
-</div>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">S<span class="text-danger">T</span>EMtronics</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto text-uppercase small fw-bold">
+                <li class="nav-item"><a class="nav-link px-3" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link px-3" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link px-3" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link px-3" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-<div class="container">
-<h1 class="fw-bold">STEM<span class="text-info">Tronics</span></h1>
-<p class="lead">Engineering the Future Through Innovation</p>
-<a href="#about" class="btn btn-primary btn-lg mt-4">Explore More</a>
-</div>
+    <div class="container">
+        <h1 class="display-2 fw-bold mb-3">S<span class="text-danger">T</span>EMtronics</h1>
+        <p class="lead mb-5 fs-3 opacity-90">Your <span class="text-danger fw-bold">Life</span>. Your <span class="text-danger fw-bold">Future</span>.</p>
+        <a href="#about" class="btn btn-danger btn-lg shadow">Discover More</a>
+    </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about" class="section">
-<div class="container">
-<div class="row align-items-center">
-<div class="col-md-6">
-<h2 class="mb-3">Who We Are</h2>
-<p>
-We are a forward-thinking startup dedicated to advancing STEM education across schools, colleges, and universities.
-</p>
-<p>
-Our mission is to empower innovators through robotics, electronics, and real-world engineering skills.
-</p>
-</div>
-
-<div class="col-md-6">
-<img src="https://images.unsplash.com/photo-1581091870627-3c8c82b7c75c" class="img-fluid rounded">
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-md-6">
+                <h6 class="text-danger fw-bold text-uppercase mb-3">Our Mission</h6>
+                <h2 class="display-5 fw-bold mb-4">Empowering Innovation</h2>
+                <p class="text-muted fs-5">We are a startup on a mission to promote STEM education across schools, colleges, and universities.</p>
+                <p class="text-muted fs-5">By teaching robotics, electronics, and practical engineering skills, we provide the tools for the next generation to build the future.</p>
+                <p class="text-muted fs-5 fw-bold text-dark"><i class="text-danger">●</i> We also do E-Waste repurposing and retrieve high-quality electronic components for reuse.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="https://images.unsplash.com/photo-1581091870627-3c8c82b7c75c?auto=format&fit=crop&q=80" class="img-fluid rounded-4 shadow-lg">
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- SERVICES -->
-<section id="services" class="section bg-dark">
-<div class="container text-center">
-<h2 class="mb-5">What We Do</h2>
-
-<div class="row g-4">
-
-<div class="col-md-4">
-<div class="card p-4">
-<h4>Prototyping</h4>
-<p>Designing innovative electronics and STEM learning tools.</p>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="card p-4">
-<h4>Research</h4>
-<p>Advancing engineering and educational technologies.</p>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="card p-4">
-<h4>Teaching</h4>
-<p>Delivering hands-on STEM programs and training.</p>
-</div>
-</div>
-
-</div>
-</div>
+<section id="services" class="section bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold display-6">What We Do</h2>
+            <div class="mx-auto bg-danger mb-4" style="height: 3px; width: 60px;"></div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card feature-card shadow-sm p-4 h-100">
+                    <h4 class="fw-bold mb-3 text-danger">Prototyping</h4>
+                    <p class="text-muted mb-0">Precision design of electronic prototypes and advanced STEM learning tools for research and education.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card shadow-sm p-4 h-100">
+                    <h4 class="fw-bold mb-3 text-danger">Research</h4>
+                    <p class="text-muted mb-0">Pushing boundaries in electronics research and modernizing engineering education through technology.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card shadow-sm p-4 h-100">
+                    <h4 class="fw-bold mb-3 text-danger">Teaching</h4>
+                    <p class="text-muted mb-0">Tailored STEM programs and robotics workshops delivered directly to schools and higher institutions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- PROJECTS -->
+
+
 <section id="projects" class="section">
-<div class="container">
-<h2 class="text-center mb-5">Our Projects</h2>
-
-<div class="row gallery g-3">
-<div class="col-md-4">
-<img src="https://circuitbest.com/wp-content/uploads/2020/10/Line-Follower-696x392.jpg" class="img-fluid">
-</div>
-
-<div class="col-md-4">
-<img src="https://ichef.bbci.co.uk/images/ic/800xn/p01sf5fd.jpg.webp" class="img-fluid">
-</div>
-
-<div class="col-md-4">
-<img src="https://images.unsplash.com/photo-1581092335397-9fa341108aa5" class="img-fluid">
-</div>
-</div>
-
-</div>
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">Featured Projects</h2>
+        <div class="row g-4 gallery">
+            <div class="col-md-4"><div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR16DSMdALS4o33dZfEUuknqLaz_mN8x074ig&sA" class="shadow-sm"></div></div>
+            <div class="col-md-4"><div class="gallery-item"><img src="https://circuitbest.com/wp-content/uploads/2020/10/Line-Follower-696x392.jpg" class="shadow-sm"></div></div>
+            <div class="col-md-4"><div class="gallery-item"><img src="https://ichef.bbci.co.uk/images/ic/800xn/p01sf5fd.jpg.webp" class="shadow-sm"></div></div>
+        </div>
+    </div>
 </section>
 
-<!-- LOCATION -->
-<section id="location" class="section bg-dark">
-<div class="container text-center">
-<h2 class="mb-4">Our Location</h2>
 
-<p class="text-secondary">
-Bwana Mukubwa, Chiwala Road<br>
-Opposite Zambezi Portland Cement Factory<br>
-Ndola, Zambia
-</p>
+<section class="section bg-white border-bottom">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">STEM Maker Labs</h2>
+            <div class="mx-auto bg-danger" style="height: 3px; width: 50px;"></div>
+        </div>
+        <div class="row align-items-center justify-content-center g-5">
+            <div class="col-6 col-md-2 text-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPqeoUAtl691hd8_yR65GcdaK4_cb9lg8H9g&s" class="partner-logo img-fluid" alt="Evelyn Hone College">
+<h6> Kansenshi Sec </h6>
+            </div>
 
-<!-- EXACT COORDINATE MAP -->
-<div class="ratio ratio-16x9 mt-4">
-<iframe 
-src="https://maps.google.com/maps?q=-13.007710372506967,28.696427932952044(STEMtronics)&z=18&output=embed"
-allowfullscreen>
-</iframe>
-</div>
+            
+            <div class="col-6 col-md-2 text-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPqeoUAtl691hd8_yR65GcdaK4_cb9lg8H9g&s" class="partner-logo img-fluid" alt="Lab">
+<h6> Chiwala Tech </h6>
+            </div>
 
-</div>
+        </div>
+    </div>
 </section>
 
-<!-- CONTACT -->
+
+<section id="location" class="section bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-2">Our Headquarters</h2>
+            <p class="text-muted">Bwana Mukubwa along Chiwala Road, Opposite Zambezi Portland Cement Factory<br><strong>Ndola, Zambia</strong></p>
+        </div>
+        <div class="map-container ratio ratio-21x9">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.4678144005!2d28.67!3d-13.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDAwJzAwLjAiUyAyOMKwNDAnMDAuMCJF!5e0!3m2!1sen!2szm!4v1625000000000!5m2!1sen!2szm" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+</section>
+
 <section id="contact" class="section">
-<div class="container">
-<h2 class="text-center mb-5">Get In Touch</h2>
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <h2 class="fw-bold mb-4">Connect With Us</h2>
+                <p class="text-muted mb-4">Ready to innovate? Reach out via WhatsApp for immediate inquiries or visit us at our Ndola office.</p>
+                
+                <a class="btn btn-whatsapp mb-4 shadow-sm" href="https://wa.me/260760744303" target="_blank">
+                    <span class="me-2">Chat on WhatsApp</span>
+                </a>
+                
+                <div class="mt-2">
+                    <p class="mb-1"><strong>Email:</strong> lexlourke@gmail.com</p>
+                    <p><strong>Follow:</strong> <a href="#" class="text-danger ms-2 text-decoration-none">Facebook</a> / <a href="#" class="text-danger ms-2 text-decoration-none">TikTok</a></p>
+                </div>
 
-<div class="row g-4">
-
-<div class="col-md-6">
-<a class="btn btn-success mb-3" href="https://wa.me/260760744303" target="_blank">
-Chat on WhatsApp
-</a>
-
-<p><strong>Email:</strong> lexlourke@gmail.com</p>
-</div>
-
-<div class="col-md-6">
-<form>
-<div class="mb-3">
-<input type="text" class="form-control" placeholder="Your Name">
-</div>
-
-<div class="mb-3">
-<input type="email" class="form-control" placeholder="Your Email">
-</div>
-
-<div class="mb-3">
-<textarea class="form-control" rows="4" placeholder="Message"></textarea>
-</div>
-
-<button class="btn btn-primary w-100">Send Message</button>
-</form>
-</div>
-
-</div>
-</div>
+                <a href="https://drive.google.com/file/d/1Xu1xSFRb2Xn83YCAbC8tL7S__7fplL2p/view" class="btn btn-dark mt-4 py-3 w-100 fw-bold">
+                    Download Component Price List
+                </a>
+            </div>
+            
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-lg p-4 bg-white rounded-4">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label small fw-bold">Your Name</label>
+                                <input type="text" class="form-control py-3 bg-light" placeholder=" ">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label small fw-bold">Email Address</label>
+                                <input type="email" class="form-control py-3 bg-light" placeholder=" ">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Message</label>
+                            <textarea class="form-control py-3 bg-light" rows="5" placeholder=" "></textarea>
+                        </div>
+                        <button class="btn btn-danger py-3 px-5 fw-bold w-100">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- FOOTER -->
+<section class="section bg-white border-bottom">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Our Partners</h2>
+            <div class="mx-auto bg-danger" style="height: 3px; width: 50px;"></div>
+        </div>
+        <div class="row align-items-center justify-content-center g-5">
+            <div class="col-6 col-md-2 text-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS44kXtpQ7E40aFbWtL5eMrOfpCR-pK1xm2TQ&s" class="partner-logo img-fluid" alt="Evelyn Hone College">
+            </div>
+
+            <div class="col-6 col-md-2 text-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8Fwsg1kMa86UEp34ztffHFltYALRgIBPblg&s" class="partner-logo img-fluid" alt="E-Tech">
+            </div>
+            <div class="col-6 col-md-2 text-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwetRjp8FZNDiSc5bxgnRe09oyTFlkAnAMAA&s" class="partner-logo img-fluid" alt="Mechatronics Club-CBU">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
 <footer class="text-center">
-<p>© 2026 STEMtronics — Building Future Innovators</p>
+    <div class="container">
+        <h4 class="text-white mb-3">S<span class="text-danger">T</span>EMtronics</h4>
+        <p class="mb-0 small">© 2026 STEMtronics — Promoting STEM Education.</p>
+    </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
